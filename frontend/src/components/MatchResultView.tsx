@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { MatchResult } from '../types'
 
 interface MatchResultViewProps {
@@ -6,7 +7,23 @@ interface MatchResultViewProps {
 }
 
 export function MatchResultView({ result, onRestart }: MatchResultViewProps) {
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle')
   const { matchedDirector: director } = result
+
+  async function copyResultLink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href)
+      setCopyState('copied')
+    } catch {
+      setCopyState('error')
+    }
+  }
+
+  const copyLabel = {
+    idle: 'Copy result link',
+    copied: 'Link copied!',
+    error: 'Copy failed — retry',
+  }[copyState]
 
   return (
     <main className="result-page">
@@ -70,10 +87,14 @@ export function MatchResultView({ result, onRestart }: MatchResultViewProps) {
         <button
           className="secondary-button"
           type="button"
-          onClick={() => void navigator.clipboard.writeText(window.location.href)}
+          onClick={() => void copyResultLink()}
         >
-          Copy result link
+          {copyLabel}
         </button>
+        <p className="sr-only" aria-live="polite">
+          {copyState === 'copied' && 'Result link copied to clipboard.'}
+          {copyState === 'error' && 'The result link could not be copied.'}
+        </p>
       </div>
     </main>
   )

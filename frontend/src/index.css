@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+:root {
+  font-family: 'Manrope', sans-serif;
+  color: #1b1a18;
+  background: #f2eadd;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #1b1a18;
+  --paper: #f2eadd;
+  --paper-light: #f8f3e9;
+  --red: #e4513c;
+  --line: rgba(27, 26, 24, 0.2);
+  --muted: #6d6860;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.7), transparent 32rem),
+    var(--paper);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible + span {
+  outline: 3px solid rgba(228, 81, 60, 0.4);
+  outline-offset: 4px;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

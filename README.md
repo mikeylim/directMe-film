@@ -378,4 +378,4 @@ before starting a large change so the scope can be discussed first.
 
 ## Author
 
-Built by [Mikey Lim](https://github.com/mikeylim).
+Built by [Mike Dohyun Lim](https://github.com/mikeylim).
